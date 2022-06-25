@@ -1,9 +1,15 @@
+html, body {
+    height: 100vh;
+}
+
 .App {
   background: linear-gradient(55deg, #4f0e3b, #1a0514);
   color: rgb(212, 197, 197);
   font: small-caps bold 1.2rem sans-serif;
   font-size: 25px;
   text-align: center;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -151,4 +157,20 @@
   font: Lucida Console;
   font-size: 20px;
   font-weight: bold;
+}
+
+.App-header>nav {
+  width: 90%;
+}
+
+.App-header>nav>a {
+  color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-decoration: none;
+  float: left;
+}
+
+.App-header>nav>a:last-child {
+  float: right;
 }

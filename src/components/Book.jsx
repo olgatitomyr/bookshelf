@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import FavoritesService from "../services/FavoritesService";
 import UsersService from "../services/UsersService";
-import {  useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const favoritesService = new FavoritesService();
 const usersService = new UsersService();
@@ -21,32 +21,34 @@ export function Book(props) {
     }, [])
     const toggle = previous => !previous;
     return (
-            <div className="book">
-                <h1 >{props.name} </h1>
-                <img src={props.image} />
-                <button onClick={() => Like(props.id)}>{liked? '♡ Like' :  'Unlike'}</button>
-                <div>
-                    <NavLink to={`/authors/${props.author_id}`}
-                        key={props.author}>
-                        <p>Автор: {props.author}</p>
-                    </NavLink>
-                    <p>Кількість сторінок: {props.page}</p>
-                    <p>Категорія: {props.category}</p>
-                    <p>Країна: {props.country}</p>
-                    <p>Період: {props.period}</p>
-                    <p>Аннотація:</p>
-                    <p>{props.annotation}</p>
-                </div>
+        <div className="book">
+            <h1 >{props.name} </h1>
+            <img src={props.image} />
+            {usersService.IsLoggedIn() &&
+                <button onClick={() => Like(props.id)}>{liked ? '♡ Like' : 'Unlike'}</button>
+            }
+            <div>
+                <NavLink to={`/authors/${props.author_id}`}
+                    key={props.author}>
+                    <p>Автор: {props.author}</p>
+                </NavLink>
+                <p>Кількість сторінок: {props.page}</p>
+                <p>Категорія: {props.category}</p>
+                <p>Країна: {props.country}</p>
+                <p>Період: {props.period}</p>
+                <p>Аннотація:</p>
+                <p>{props.annotation}</p>
             </div>
+        </div>
     )
 
     async function Like(id) {
-        if (liked){
-            try {await favoritesService.Like(id);} catch {}
+        if (liked) {
+            try { await favoritesService.Like(id); } catch { }
             setLiked(toggle);
         }
         else {
-            try {await favoritesService.Unlike(id);} catch {}
+            try { await favoritesService.Unlike(id); } catch { }
             setLiked(toggle);
         }
     }
