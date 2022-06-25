@@ -38,4 +38,21 @@ export default class UsersService extends ApiServiceBase {
 
         return result;
     }
+
+    async Register(userName, email, password, confirmPassword) {
+        const endpoint = `${this.BASE_URI}/Users/Register`;
+
+        let response = await this.Post(endpoint, { userName: userName, email: email, password: password, confirmPassword: confirmPassword });
+
+        let result = {
+            success: false,
+        }
+        result.text = await response.json();
+
+        if (response.ok) {
+            result.success = true;
+        }
+
+        return result;
+    }
 }

@@ -36,7 +36,9 @@ root.render(
       <Route path='/login' element={<App />}>
         <Route index element={<LoginPage />} />
       </Route>
-      <Route path='/register' element={<RegistrationPage />} />
+      <Route path='/register' element={<App />}>
+        <Route index element={<RegistrationPage />} />
+      </Route>
     </Routes>
   </BrowserRouter >);
 
