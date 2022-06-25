@@ -19,7 +19,7 @@ export function Book(props) {
         }
         fetchData()
     }, [])
-
+    const toggle = previous => !previous;
     return (
             <div className="book">
                 <h1 >{props.name} </h1>
@@ -43,11 +43,11 @@ export function Book(props) {
     async function Like(id) {
         if (liked){
             try {await favoritesService.Like(id);} catch {}
-            setLiked(true);
+            setLiked(toggle);
         }
         else {
             try {await favoritesService.Unlike(id);} catch {}
-            setLiked(false)
+            setLiked(toggle);
         }
     }
 }
