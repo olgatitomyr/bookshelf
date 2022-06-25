@@ -1,3 +1,6 @@
+# Backend Note:
+A running API is required for the front-end application to work. In order to run API please navigate to API/BookshelfApi and execute command `dotnet run`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
